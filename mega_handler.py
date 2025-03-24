@@ -82,16 +82,16 @@ def cleanup_expired_files():
         for file in expired_files:
             try:
                 # Удаляем файл из MEGA
-                m.delete(file['file_id'])
+                m.delete(file.file_id)
                 
                 # Удаляем запись из базы данных
-                delete_mega_file_record(file['file_id'])
+                delete_mega_file_record(file.file_id)
                 
                 # Если есть локальный файл, удаляем его
-                if os.path.exists(file['path']):
-                    os.remove(file['path'])
+                if os.path.exists(file.path):
+                    os.remove(file.path)
             except Exception as e:
-                print(f"Ошибка при удалении файла {file['file_id']}: {e}")
+                print(f"Ошибка при удалении файла {file.file_id}: {e}")
     
     except Exception as e:
         print(f"Ошибка при очистке файлов: {e}")

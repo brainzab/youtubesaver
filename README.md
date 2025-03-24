@@ -9,13 +9,14 @@
 - Загрузка файлов на MEGA
 - Автоматическое удаление файлов через 1 час
 - Статистика использования для администратора
+- Хранение данных в PostgreSQL
 
 ## Требования
 
 - Python 3.8+
 - Аккаунт Telegram
 - Аккаунт MEGA
-- Аккаунт MongoDB (опционально, для сбора статистики)
+- PostgreSQL
 
 ## Установка и запуск локально
 
@@ -35,7 +36,7 @@ pip install -r requirements.txt
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 MEGA_EMAIL=your_mega_email
 MEGA_PASSWORD=your_mega_password
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/youtube_downloader
+DATABASE_URL=postgresql://username:password@localhost:5432/youtube_downloader
 ADMIN_USER_ID=your_telegram_user_id
 ```
 
@@ -55,8 +56,9 @@ python bot.py
 
 1. Войдите в аккаунт Railway
 2. Нажмите "New Project"
-3. Выберите "Deploy from GitHub repo"
-4. Подключите свой GitHub аккаунт и выберите репозиторий с ботом
+3. Сначала создайте сервис PostgreSQL: выберите "Provision PostgreSQL"
+4. Затем создайте сервис из GitHub: выберите "Deploy from GitHub repo"
+5. Подключите свой GitHub аккаунт и выберите репозиторий с ботом
 
 ### Шаг 3: Настройка переменных окружения
 
@@ -65,8 +67,8 @@ python bot.py
    - `TELEGRAM_BOT_TOKEN` - токен бота, полученный от BotFather
    - `MEGA_EMAIL` - email аккаунта MEGA
    - `MEGA_PASSWORD` - пароль аккаунта MEGA
-   - `MONGODB_URI` - URI для подключения к MongoDB
    - `ADMIN_USER_ID` - ваш Telegram ID (для доступа к статистике)
+3. Переменная `DATABASE_URL` должна быть автоматически добавлена при создании PostgreSQL сервиса
 
 ### Шаг 4: Развертывание бота
 
@@ -93,6 +95,7 @@ python bot.py
 - Ссылки на скачивание действительны в течение 1 часа
 - Файлы на MEGA удаляются автоматически через 1 час
 - Для хранения файлов используется временная папка на MEGA
+- База данных PostgreSQL автоматически создаст необходимые таблицы при первом запуске
 
 ## Лицензия
 

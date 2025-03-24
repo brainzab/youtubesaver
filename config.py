@@ -11,8 +11,8 @@ TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 MEGA_EMAIL = os.getenv('MEGA_EMAIL')
 MEGA_PASSWORD = os.getenv('MEGA_PASSWORD')
 
-# MongoDB подключение
-MONGODB_URI = os.getenv('MONGODB_URI')
+# PostgreSQL подключение
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 # ID администратора бота
 ADMIN_USER_ID = int(os.getenv('ADMIN_USER_ID', 0))
